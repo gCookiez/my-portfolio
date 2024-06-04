@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -11,16 +12,93 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles/styles.css">
-    <title>PORTFOLIO</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
+<body> 
+    <div id="green-blob"></div>
+    <div id="sub-blob"></div>
+    <div id="blob"></div>
+    <div id="blur"></div>
 
-<body>
+    <div id="curtain"></div>
+    <div class="wrapper">
+     
 
-    <div class="w-75 mx-auto min-vh-100 marker"></div>
-    <div class="w-75 mx-auto min-vh-100 site-container"></div>
-    <script src="scripts/main.js"></script>
 
+      <header>
+            <nav>
+            <ul>
+                <li><a href="#home" class="active"> Home </a> </li>  
+                <li><a href="#projects"> Projects</a> </li>  
+                <li><a href="#about"> About </a> </li>  
+                <li><a href="#contact"> Contact</a> </li>  
+            </ul>
+            </nav>
+
+        </header>
+    
+        <div class="snap-heroes" id="scroll-id">
+            <div class="home hero" id="home">
+                <h1>Marcus Gajo</h1>
+                <h3 id="blinking-text">Scroll Down to Explore More</h3>
+            </div>
+
+            <div class="project hero" id="projects">
+                <h1>Projects</h1>
+                <div class="list-of-projects">
+                    <div class="proj-li">
+                        <div>
+                        <h4> To be added... </h4>
+                        </div>
+                    </div>
+                    
+                    <div class="proj-li">
+                        <div>
+                        <h4> To be added... </h4>
+                        </div>
+                    </div>
+
+                    <div class="proj-li">
+                        <div>
+                        <h4> To be added... </h4>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-next">></button>
+                    <button class="btn btn-prev disabled"><</button>
+                </div>
+            </div>
+
+            <div class="about hero" id="about">
+                <h1>About</h1>
+                <p>Ullamco veniam amet duis ad incididunt. Occaecat mollit ullamco ut qui irure velit labore adipisicing ipsum nostrud aliquip irure qui cillum. Dolor laborum fugiat id ut qui cupidatat sint incididunt duis ea consequat anim. Aliquip cillum irure culpa mollit aute duis eu deserunt consectetur sunt labore mollit et pariatur.   
+                </p>
+            </div>
+
+            <div class="contact hero" id="contact">
+                <h1>Contact</h1>
+                <div id="form-container">
+                    <form action="#home" method="post">
+                    <label for="Name" > Name: </label> <br> <br>
+                    <input type="text" name="name" id="#contact_name"> <br> <br>
+                    <label for="E-mail" > E-mail: </label> <br> <br>
+                    <input type="email" name="email" id="#email"> <br> <br>
+                    <label for="ContactNumber" > Contact Number: </label> <br> <br>
+                    <input type="tel" name="ContactNumber" id="#contactNumber"> <br> <br>
+                    <label for="coverletter"> Cover Letter: </label> <br> <br>
+                    <textarea rows="16%" name="coverletter" placeholder="Insert Your Intention" id="#comment"></textarea>
+                    <button type="submit" id="#form-submit"> Send it!</button>
+
+
+                    </form>
+                </div>
+                
+                <!-- Insert Form later --> 
+            </div>
+        </div>
+
+    </div>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/carousel.js"></script>
 </body>
-
 </html>
