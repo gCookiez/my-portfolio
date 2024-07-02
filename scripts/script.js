@@ -216,6 +216,21 @@ class circle {
 }
 
 var circleArray = [];
+function generateCircles({count = 100}) {
+    if(circleArray.length == 0){
+        for (i = 0; i <= count; i++) {
+            let rad = 30
+            let x = (Math.floor(Math.random() * (window.innerWidth - rad + 1) + rad))
+            let y = (Math.floor(Math.random() * (window.innerHeight - rad + 1) + rad))
+            let dx = (Math.random() - 0.5) * 8
+            let dy = (Math.random() - 0.5) * 8
+        
+            circleArray.push(new circle(x, y, dx, dy, rad, getRandomColor(), getRandomColor()));
+        }
+    }
+    
+}
+
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -226,20 +241,48 @@ function getRandomColor() {
     return color;
   }
 
-for (i = 0; i <= 100; i++) {
-    let rad = 30
-    let x = (Math.floor(Math.random() * (window.innerWidth - rad + 1) + rad))
-    let y = (Math.floor(Math.random() * (window.innerHeight - rad + 1) + rad))
-    let dx = (Math.random() - 0.5) * 8
-    let dy = (Math.random() - 0.5) * 8
+  function setInputFilter(textbox, inputFilter, errMsg) {
+    [ "input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout" ].forEach(function(event) {
+      textbox.addEventListener(event, function(e) {
+        if (inputFilter(this.value)) {
+          // Accepted value.
+          if ([ "keydown", "mousedown", "focusout" ].indexOf(e.type) >= 0){
+            this.classList.remove("input-error");
+            this.setCustomValidity("");
+          }
+  
+          this.oldValue = this.value;
+          this.oldSelectionStart = this.selectionStart;
+          this.oldSelectionEnd = this.selectionEnd;
+        }
+        else if (this.hasOwnProperty("oldValue")) {
+          // Rejected value: restore the previous one.
+          this.classList.add("input-error");
+          this.setCustomValidity(errMsg);
+          this.reportValidity();
+          this.value = this.oldValue;
+          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+        }
+        else {
+          // Rejected value: nothing to restore.
+          this.value = "";
+        }
+      });
+    });
+  }
 
-    circleArray.push(new circle(x, y, dx, dy, rad, getRandomColor(), getRandomColor()));
-}
+
 
 
 
 var total = 0;
 var paused = false;
+
+generateCircles({})
+
+setInputFilter($('#ballCount')[0], function(value) {
+    return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp.
+  }, "Only digits and '.' are allowed");
 
 function animate() {
     requestAnimationFrame(animate);
@@ -306,6 +349,30 @@ $('#resume').on('click', () => {
     for (i of circleArray) {
         i.resume()
     }
+
+    if (paused) {
+        paused = false;
+    }
+})
+
+$('#reset').on('click', () => {
+    for (i in circleArray) {
+        delete circleArray[i]
+    }
+    circleArray = [];
+    generateCircles({});
+
+    if (paused) {
+        paused = false;
+    }
+})
+
+$($('#ballCount').next()).on('click', () => {
+    for (i in circleArray) {
+        delete circleArray[i]
+    }
+    circleArray = [];
+    generateCircles({count : $('#ballCount').val()});
 
     if (paused) {
         paused = false;

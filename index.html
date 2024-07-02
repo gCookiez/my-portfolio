@@ -23,13 +23,24 @@
     <div id="containment" class="container-fluid">
         <div class="container-fluid text-center mt-3 ms-0 me-0">
             <div class="row justify-content-md-center">
-                <div class="col text-start"> <h1 id="avg">0</span> </div>
-                <div class="col"></div>
+                <div class="col text-start">
+                    <h1 id="avg">0</span>
+                </div>
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control"  id='ballCount' aria-label="Amount (to the nearest dollar)">
+                        <button class="btn btn-warning input-group-text" id="button-addon2">Generate</span>
+
+                    </div>
+
+                </div>
                 <div class="col text-end">
+
                     <button id="pause" type="button" class="btn btn-warning">Pause</button>
                     <button id="resume" type="button" class="btn btn-success">Resume</button>
                     <button id="speedup" type="button" class="btn btn-primary">Speed Up</button>
                     <button id="speeddown" type="button" class="btn btn-danger">Speed Down</button>
+                    <button id="reset" type="button" class="btn btn-danger">Reset</button>
                 </div>
             </div>
 
